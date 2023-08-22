@@ -1,0 +1,86 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "API de Usuários",
+      "description": "API para gerenciar usuários com informações de CPF, nome e data de nascimento."
+    },
+    "basePath": "/",
+    "paths": {
+      "/usuarios": {
+        "post": {
+          "summary": "Cria um novo usuário",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cpf": {
+                    "type": "integer",
+                    "example": 123456789
+                  },
+                  "nome": {
+                    "type": "string",
+                    "example": "Exemplo"
+                  },
+                  "data_nascimento": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1990-01-01"
+                  }
+                },
+                "required": ["cpf", "nome", "data_nascimento"]
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Usuário criado com sucesso"
+            }
+          }
+        }
+      },
+      "/usuarios/{cpf}": {
+        "get": {
+          "summary": "Obtém informações de um usuário",
+          "parameters": [
+            {
+              "name": "cpf",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Dados do usuário",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cpf": {
+                    "type": "integer",
+                    "example": 123456789
+                  },
+                  "nome": {
+                    "type": "string",
+                    "example": "Exemplo"
+                  },
+                  "data_nascimento": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1990-01-01"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Usuário não encontrado"
+            }
+          }
+        }
+      }
+    }
+  }
+  
