@@ -2,7 +2,7 @@ const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const api = express();
-const port = 3000; // Escolha uma porta de sua preferência
+const port = 3000;
 
 api.use(express.json());
 
